@@ -33,14 +33,19 @@ export default function Home() {
     setSelectedProducts([]);
   };
 
+  const handleProductRemove = (productId: number) => {
+    setSelectedProducts(selectedProducts.filter((p) => p.id !== productId));
+  };
+
   return (
     <main className="md:px-[264px] mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-4">Packing Algorithm Demo</h1>
+      <h1 className="text-3xl font-bold mb-4">Packing Algorithm</h1>
       <ProductSelection
         products={products}
         selectedProducts={selectedProducts}
         onProductSelect={handleProductSelect}
         onClearSelected={handleClearSelected}
+        onProductRemove={handleProductRemove}
       />
       <div className="my-4">
         <Button onClick={handlePack} disabled={selectedProducts.length === 0}>
